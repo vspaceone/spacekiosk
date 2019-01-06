@@ -170,7 +170,10 @@ async function onAddCredit(){
         }
     })
 
-    updateAccountInfo(await db.updateCredit(viewModel.uid(), Number.parseInt(amount)))
+    amount = Number.parseInt(amount)
+    if (amount >= 0 && amount != NaN){  // sane bounds check to prevent nonsens like NaN and negative numbers
+        updateAccountInfo(await db.updateCredit(viewModel.uid(), amount))
+    }   
 }
 
 async function onRemoveCredit(){
@@ -186,7 +189,10 @@ async function onRemoveCredit(){
         }
     })
 
-    updateAccountInfo(await db.updateCredit(viewModel.uid(), -Number.parseInt(amount)))
+    amount = Number.parseInt(amount)
+    if (amount >= 0 && amount != NaN){  // sane bounds check to prevent nonsens like NaN and negative numbers
+        updateAccountInfo(await db.updateCredit(viewModel.uid(), -amount))
+    }  
 }
 
 //################################################################
