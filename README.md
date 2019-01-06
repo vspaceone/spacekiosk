@@ -19,7 +19,19 @@ What do I need to have in order to use this directly?
 - A metraTec QR15 RFID-Tag reader, others can be implemented in the `tagreader.js` file with simple serial commands
 - The UI is designed to be used solely with a numpad (USB, Bluetooth or whatever connects well to your platform), I suggest one with a backspace key
 - A monitor for the UI
-- Something to run this software and connect the hardware to. From a Raspberry Pi to a beefy gaming rig everything that can run Node applications with the electron framework, has a few USB-ports and a video output should work 
+- Something to run this software and connect the hardware to. From a Raspberry Pi to a beefy gaming rig everything that can run Node applications with the electron framework, a mongodb and has a few USB-ports and a video output should work 
+
+## Installation
+Installation is as simple as calling these in your shell:
+```
+git clone https://github.com/vspaceone/spacekiosk.git
+cd spacekiosk
+npm install
+$(npm bin)/electron-rebuild
+npm start
+```
+
+Before you do `npm start` you should check the configuration as described below.
 
 ## Configuration
 Configuration can be accomplished either by environment variables or a configuration file.
