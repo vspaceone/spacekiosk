@@ -6,6 +6,13 @@ Upon reading a tag-id with the connected reader (the implemented reader is a met
 If no account for this tag-id can be found, a new one will be created with 0€ credit.
 Future readings of this tag open the associated account showing its credit and make it possible to change the credit by adding or removing different amounts.
 
+## Impressions
+
+![Idle State](images/spacekiosk_idle.png)
+![Idle State](images/spacekiosk_loggedin.png)
+![Idle State](images/spacekiosk_add2.png)
+![Idle State](images/spacekiosk_remove1.png)
+
 ## TODOs / Future-features
 - Make the currency symbol configurable (€,$ etc.)
 - Support for other reader models and better tagreader API for easier replacement of different reader implementation
