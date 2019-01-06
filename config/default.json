@@ -1,0 +1,13 @@
+{
+    "mongo":"mongodb://root:example@localhost:27017/?authMechanism=DEFAULT&authSource=admin",
+    "reader":{
+        "dev": "/dev/ttyUSB0",
+        "baudrate": 115200
+    },
+    "window":{
+        "width": 960,
+        "height":640,
+        "fullscreen":false,
+        "hidemenu":false
+    }
+}

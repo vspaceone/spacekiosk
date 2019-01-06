@@ -1,0 +1,28 @@
+{
+  "name": "spacekiosk",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "electron-packager": "^13.0.1",
+    "electron-rebuild": "^1.8.2"
+  },
+  "dependencies": {
+    "bootstrap": "^4.2.1",
+    "config": "^3.0.1",
+    "electron": "^4.0.0",
+    "jquery": "^3.3.1",
+    "knockout": "^3.4.2",
+    "ldapjs": "^1.0.2",
+    "mongodb": "^3.1.10",
+    "popper.js": "^1.14.6",
+    "randexp": "^0.5.3",
+    "serialport": "^7.1.1",
+    "sweetalert2": "^7.33.1"
+  }
+}

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Hello World!</title>
+
+    <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="node_modules/sweetalert2/dist/sweetalert2.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+
+    <header class="container-fluid text-center">
+        <div class="row">
+            <div class="col-sm">
+                <p data-bind="text: uid"></p>
+            </div>
+            <div class="col-sm">
+                <p data-bind="text: credit"></p>
+            </div>
+        </div>
+    </header>
+  
+
+    <div id="background_image">
+        <img id="vspaceone_logo" class="svg" src="res/img/vspaceone-sw.svg">
+    </div>
+
+    
+    <footer class="text-center text-muted">
+        <div class="row">
+            <div class="col-sm">
+                <p data-bind="text: footerText"></p> <!--id="footer-text" Press enter or scan RFID-Tag to login-->
+            </div>
+        </div>        
+    </footer>
+
+    <script>window.$ = window.jQuery = require('./node_modules/jquery/dist/jquery.min');</script>
+    <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="./node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
+    <script>
+        var renderer = require('./renderer.js')
+    </script>
+
+    </body>
+
+</html>
