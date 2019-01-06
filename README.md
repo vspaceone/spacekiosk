@@ -8,10 +8,18 @@ Future readings of this tag open the associated account showing its credit and m
 
 ## TODOs / Future-features
 - Make the currency symbol configurable (€,$ etc.)
-- Support for other reader models
+- Support for other reader models and better tagreader API for easier replacement of different reader implementation
 - Possibility to migrate account to another tag-id (als possible with minor mongodb manipulation for now)
 - More error messages in the UI (like e.g. "DB connection failed")
 - Further separation between UI and Backend (by directories), to make it easier to change the theme in forks
+
+## Prerequisites
+What do I need to have in order to use this directly?
+
+- A metraTec QR15 RFID-Tag reader, others can be implemented in the `tagreader.js` file with simple serial commands
+- The UI is designed to be used solely with a numpad (USB, Bluetooth or whatever connects well to your platform), I suggest one with a backspace key
+- A monitor for the UI
+- Something to run this software and connect the hardware to. From a Raspberry Pi to a beefy gaming rig everything that can run Node applications with the electron framework, has a few USB-ports and a video output should work 
 
 ## Configuration
 Configuration can be accomplished either by environment variables or a configuration file.
