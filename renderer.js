@@ -158,7 +158,7 @@ window.addEventListener('logout', function(){
 });
 
 async function onAddCredit(){
-    const {value : amount} = await Swal({
+    var {value : amount} = await Swal({
         title: 'Enter amount to add',
         type: 'question',
         showConfirmButton: true,
@@ -177,7 +177,7 @@ async function onAddCredit(){
 }
 
 async function onRemoveCredit(){
-    const {value : amount} = await Swal({
+    var {value : amount} = await Swal({
         title: 'Enter amount to remove',
         type: 'question',
         showConfirmButton: true,
