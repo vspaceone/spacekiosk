@@ -9,6 +9,9 @@ var data = require('./data.js')
 
 const db = new data.DB(defaultIfUndefined(process.env.SK_MongoDB, config.get('mongo')))
 
+const DEBUG = defaultIfUndefined(process.env.SK_DEBUG, config.get('debug'))
+
+
 function defaultIfUndefined(vvalue, def){
     return vvalue != undefined ? vvalue : def
 }
@@ -32,9 +35,9 @@ ko.applyBindings(viewModel);
 //################################################################
 
 // set what to do when a tag is read
-tagreader.setOnTagReadCallback(tagReadDefault)
+tagreader.setOnTagReadCallback(loginByUid)
 
-async function tagReadDefault(uid) {
+async function loginByUid(uid) {
     var account = await db.getAccountByTagID(uid)
     if (account == null){
 
@@ -77,6 +80,12 @@ function removeCreditKeyListener(ev){
     }
 }
 
+function debugLoginListener(ev){
+    if (ev.key == "l"){
+        onDebugLogin()
+    }
+}
+
 
 //################################################################
 // User interface
@@ -102,7 +111,6 @@ function loggedInState(){
     window.addEventListener('keyup', logoutKeyListener, true)
     window.addEventListener('keyup', removeCreditKeyListener, true)
     window.addEventListener('keyup', addCreditKeyListener, true)
-    
 }
 
 function emptyCartState(){
@@ -156,6 +164,30 @@ window.addEventListener('logout', function(){
 
     loggedOutState()
 });
+
+window.addEventListener('keyup', debugLoginListener, true)
+
+/**
+ * Shows debug login dialog circumventing the need for a tag reader
+ */
+async function onDebugLogin(){
+    if (DEBUG){
+        var {value : id} = await Swal({
+            title: 'DEBUG: Enter ID',
+            type: 'warning',
+            showConfirmButton: true,
+            input: 'text',
+            inputPlaceholder: 'ID',
+            inputAttributes: {
+                autocapitalize: 'off',
+                autocorrect: 'off'
+            }
+        })
+    
+        loginByUid(id)
+        
+    }
+}
 
 async function onAddCredit(){
     var {value : amount} = await Swal({
