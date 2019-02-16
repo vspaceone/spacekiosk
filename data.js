@@ -19,6 +19,10 @@ class DB {
 
     async getAccountByTagID(tagID){
         await this.client.connect()
+            .catch((err) => {
+                console.log("Catched: " + err)
+                throw "Error connecting to DB"
+            });
 
         const db = this.client.db("spacekiosk")
 

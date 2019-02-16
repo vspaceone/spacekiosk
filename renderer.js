@@ -38,7 +38,21 @@ ko.applyBindings(viewModel);
 tagreader.setOnTagReadCallback(loginByUid)
 
 async function loginByUid(uid) {
-    var account = await db.getAccountByTagID(uid)
+
+    try {
+        var account = await db.getAccountByTagID(uid)
+    } catch (err) {
+        await Swal({
+            position: 'top-end',
+            type: 'error',
+            title: err,
+            showConfirmButton: false,
+            toast: true,
+            timer: 2000
+          })
+        return
+    }
+
     if (account == null){
 
         await db.createAccount(uid)
