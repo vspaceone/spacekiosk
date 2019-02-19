@@ -15,7 +15,7 @@ function defaultIfUndefined(vvalue, def){
     return vvalue != undefined ? vvalue : def
 }
 
-var logoutTimeoutHandler = null
+//var logoutTimeoutHandler = null
 
 //################################################################
 // View model
@@ -162,10 +162,10 @@ function loggedOutState(){
 function onLogin(account){
     console.log(account)
 
-    logoutTimeoutHandler = setTimeout(function(){
+    /*logoutTimeoutHandler = setTimeout(function(){
         var event = new Event('logout')
         window.dispatchEvent(event)
-    },10000)
+    },10000)*/
 
     updateAccountInfo(account)
 
@@ -187,13 +187,13 @@ window.addEventListener('logout', function(){
 
 window.addEventListener('keyup', debugLoginListener, true)
 
-window.addEventListener('keyup', function(){
+/*window.addEventListener('keyup', function(){
     clearTimeout(logoutTimeoutHandler)
     logoutTimeoutHandler = setTimeout(function(){
         var event = new Event('logout')
         window.dispatchEvent(event)
     },20000)
-}, true)
+}, true)*/
 
 /**
  * Shows debug login dialog circumventing the need for a tag reader
