@@ -11,10 +11,11 @@ const db = new data.DB(defaultIfUndefined(process.env.SK_MongoDB, config.get('mo
 
 const DEBUG = defaultIfUndefined(process.env.SK_DEBUG, config.get('debug'))
 
-
 function defaultIfUndefined(vvalue, def){
     return vvalue != undefined ? vvalue : def
 }
+
+var logoutTimeoutHandler = null
 
 //################################################################
 // View model
@@ -161,6 +162,11 @@ function loggedOutState(){
 function onLogin(account){
     console.log(account)
 
+    logoutTimeoutHandler = setTimeout(function(){
+        var event = new Event('logout')
+        window.dispatchEvent(event)
+    },10000)
+
     updateAccountInfo(account)
 
     loggedInState()
@@ -180,6 +186,14 @@ window.addEventListener('logout', function(){
 });
 
 window.addEventListener('keyup', debugLoginListener, true)
+
+window.addEventListener('keyup', function(){
+    clearTimeout(logoutTimeoutHandler)
+    logoutTimeoutHandler = setTimeout(function(){
+        var event = new Event('logout')
+        window.dispatchEvent(event)
+    },20000)
+}, true)
 
 /**
  * Shows debug login dialog circumventing the need for a tag reader

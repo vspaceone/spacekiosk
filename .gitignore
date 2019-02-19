@@ -84,4 +84,7 @@ typings/
 # DynamoDB Local files
 .dynamodb/
 
+# prod config overrides
+config/prod.json
+
 # End of https://www.gitignore.io/api/node
