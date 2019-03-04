@@ -231,7 +231,7 @@ async function onAddCredit(){
     })
 
     amount = Number.parseInt(amount)
-    if (amount >= 0 && amount != NaN){  // sane bounds check to prevent nonsens like NaN and negative numbers
+    if (amount >= 0 && !(isNaN(amount))){  // sane bounds check to prevent nonsens like NaN and negative numbers
         updateAccountInfo(await db.updateCredit(viewModel.uid(), amount))
     }   
 }
