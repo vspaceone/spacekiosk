@@ -20,7 +20,7 @@
     "knockout": "^3.4.2",
     "mongodb": "^3.1.10",
     "popper.js": "^1.14.6",
-    "serialport": "^7.1.1",
+    "serialport": "^9.0.7",
     "sweetalert2": "^7.33.1"
   }
 }
