@@ -8,7 +8,8 @@
         "width": 960,
         "height":640,
         "fullscreen":false,
-        "hidemenu":true
+        "hidemenu":true,
+        "kiosk":false
     },
     "debug":true
 }
