@@ -5,6 +5,8 @@ var width = defaultIfUndefined(process.env.SK_WWidth, config.get('window.width')
 var height = defaultIfUndefined(process.env.SK_WHeight, config.get('window.height'))
 var fullscreen = defaultIfUndefined(process.env.SK_WFullscreen, config.get('window.fullscreen'))
 var hidemenu = defaultIfUndefined(process.env.SK_WHideMenu, config.get('window.hidemenu'))
+var kiosk = defaultIfUndefined(process.env.SK_WKiosk, config.get('window.kiosk'))
+
 
 function defaultIfUndefined(vvalue, def){
   return vvalue != undefined ? vvalue : def
@@ -16,7 +18,7 @@ let win
 
 function createWindow () {
   // Create the browser window.
-  win = new BrowserWindow({ width: width, height: height, fullscreen: fullscreen, autoHideMenuBar: hidemenu })
+  win = new BrowserWindow({ width: width, height: height, fullscreen: fullscreen, autoHideMenuBar: hidemenu, kiosk: kiosk })
 
   // and load the index.html of the app.
   win.loadFile('index.html')
