@@ -174,7 +174,7 @@ function onLogin(account){
 
 function updateAccountInfo(account){
     viewModel.uid(account.tagID)
-    viewModel.credit(account.credit + '€')  
+    viewModel.credit(getEurosFromCent(account.credit) + '€')  
 }
 
 window.addEventListener('logout', function(){
@@ -230,9 +230,10 @@ async function onAddCredit(){
         }
     })
 
-    amount = Number.parseInt(amount)
-    if (amount >= 0 && !(isNaN(amount))){  // sane bounds check to prevent nonsens like NaN and negative numbers
-        updateAccountInfo(await db.updateCredit(viewModel.uid(), amount))
+    amount = Number.parseInt(amount.replaceWith(",", "."))
+    var centAmount = getCentsFromEuros(amount);
+    if (centAmount >= 0 && !(isNaN(centAmount))){  // sane bounds check to prevent nonsens like NaN and negative numbers
+        updateAccountInfo(await db.updateCredit(viewModel.uid(), centAmount))
     }   
 }
 
@@ -249,10 +250,19 @@ async function onRemoveCredit(){
         }
     })
 
-    amount = Number.parseInt(amount)
-    if (amount >= 0 && amount != NaN){  // sane bounds check to prevent nonsens like NaN and negative numbers
-        updateAccountInfo(await db.updateCredit(viewModel.uid(), -amount))
+    amount = Number.parseInt(amount.replaceWith(",", "."))
+    var centAmount = getCentsFromEuros(amount);
+    if (centAmount >= 0 && !(isNaN(centAmount))){  // sane bounds check to prevent nonsens like NaN and negative numbers
+        updateAccountInfo(await db.updateCredit(viewModel.uid(), -centAmount))
     }  
+}
+
+async function getCentsFromEuros(amount){
+    return amount*100;
+}
+
+async function getEurosFromCent(amount){
+    return amount/100;
 }
 
 //################################################################
